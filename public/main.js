@@ -558,7 +558,7 @@ function shareDownload(){
 			url: 'https://fwl.bassinecorp.fr/download',
 			title: translations.download.shareDownloadTitle || undefined
 		})
-	} else location.href = '/download'
+	} else location.href = 'download'
 }
 
 async function getTranslations(language){
