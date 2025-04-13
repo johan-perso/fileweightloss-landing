@@ -1,0 +1,139 @@
+{
+	"global": {
+		"clickHereInfinitif": "Cliquer ici",
+		"clickHere": "Cliquez ici",
+		"close": "Fermer"
+	},
+	"head": {
+		"description": "Faites perdre du poids à vos fichiers vidéos, audios et à vos documents PDFs. Disponible gratuitement pour Windows, macOS et Linux."
+	},
+	"jsRequired": {
+		"title": "JavaScript désactivé",
+		"content": "Pour visiter ce site, vous devrez activer JavaScript dans les réglages de votre navigateur. <a class='hover:underline text-blue-400' href='https://fr.wikihow.com/activer-JavaScript'>Cliquer ici</a> pour en savoir plus."
+	},
+	"navbar": {
+		"features": "Fonctionnalités",
+		"download": "Télécharger",
+		"opensource": "Open-Source",
+		"try": "Essayer",
+		"tryOnBrowser": "sur navigateur",
+		"tryHere": "ici"
+	},
+	"hero": {
+		"title": "Faites perdre du poids à vos fichiers 🏋️‍♂️",
+		"screensAlt": "Capture d'écran de l'application"
+	},
+	"comparison": {
+		"videoBeforeAlt": "Comparatif Avant",
+		"videoAfterAlt": "Comparatif Après",
+		"videoBeforeText": "Original",
+		"videoAfterText": "Réglages moyens"
+	},
+	"features": {
+		"quality": {
+			"title": "Parfait compromis",
+			"content": "Vous avez le choix entre plusieurs préréglages lors de la compression de vos fichiers. Économiser en taille sans impacter la qualité finale.",
+			"secondaryContent": "Les réglages modifient la qualité de la vidéo sans toucher à sa résolution. Les FPS et la qualité audio seront baissés en dessous du préréglage « Moyen ».",
+			"imgAlt": "Régler la qualité de compression"
+		},
+		"conversions": {
+			"title": "Conversions",
+			"content": "Gardez seulement la source audio d’une vidéo, ou obtenez une vidéo à partir d’un fichier MP3 ! Vous pouvez également convertir en un GIF.",
+			"secondaryContent": "Pour des cas avancés, vous pourrez même définir une illustration personnalisée à votre fichier audio, et le nombre de FPS pour vos GIFs.",
+			"imgAlt": "Convertir vos fichiers"
+		},
+		"offline": {
+			"title": "Hors-ligne",
+			"content": "Soyez garanti que vos données ne transiteront jamais par un serveur, l’app fonctionne sans connexion. Vos fichiers, vos données, sans limites.",
+			"secondaryContent": "Le traitement est géré localement à l'aide de modules fournis à l'installation de FileWeightLoss, ou téléchargeables depuis les réglages.",
+			"imgAlt": "Fonctionne hors connexion"
+		}
+	},
+	"cta": {
+		"title": "Télécharger File Weight Loss et réduisez la taille de vos fichiers jusqu’à 95 % !",
+		"content": "Simplifiez le stockage et le partage de vos fichiers volumineux vers les plateformes imposant une limite de stockage, et gagnez en productivité.",
+		"download": "Télécharger",
+		"downloadAnotherPlatform": "Télécharger pour une autre plateforme"
+	},
+	"demos": {
+		"videoAlt": "Démonstration compression d'une vidéo",
+		"pdfAlt": "Démonstration compression d'un document PDF"
+	},
+	"morefeatures": {
+		"advancedSupports": {
+			"title": "Supports avancés",
+			"content": "Les formats les plus communs des vidéos, fichiers audios et photos sont supportés. Un module pour documents PDF est proposée."
+		},
+		"fast": {
+			"title": "Simple et rapide",
+			"content": "Ne perdez pas de temps, ouvrez File Weight Loss, glissez vos fichiers dans la fenêtre et démarrez la compression sans attendre."
+		},
+		"free": {
+			"title": "Gratuit<span class='max-[1100px]:hidden'>&nbsp;et </span><span class='min-[1101px]:hidden'>, </span>sans pubs",
+			"content": "Complètement gratuit, sans publicité, open-source et disponible sur tous les systèmes de bureau."
+		},
+		"efficient": {
+			"title": "Jusqu'à 95%",
+			"content": "Mettez la barre au maximum et obtenez une compression de vos vidéos jusqu'à 95% grâce aux optimisations proposées !"
+		},
+		"browser": {
+			"title": "Sur navigateur",
+			"content": "Bientôt disponible à l'essai depuis votre navigateur via une version limitée proposant le même niveau de compression."
+		},
+		"multilanguage": {
+			"title": "Multilingue",
+			"content": "Entièrement traduit en français et en anglais. Nous n'ajouterons pas non plus de propriétés dépendantes d'une langue dans vos fichiers."
+		}
+	},
+	"footer": {
+		"downloadSection": "Téléchargement",
+		"downloadSectionShort": "Installer",
+		"githubSource": "Code source",
+		"githubChangelog": "Changelog",
+		"githubLicense": "Licence",
+		"moreSection": "Plus",
+		"webVersion": "Version WEB (soon)",
+		"cliVersion": "<span class='max-[450px]:hidden'>Version&nbsp;</span>Terminal</a>",
+		"contact": "Contact",
+		"appDev": "Développé depuis Paris &nbsp;🥐&nbsp; par Elie.",
+		"webDev": "Site conçu par "
+	},
+	"download": {
+		"pageName": "Téléchargement",
+		"defaultModalTitle": "Téléchargement",
+		"defaultModalContent": "Un problème est survenu lors du rendu de ce composant. Veuillez réessayer plus tard et <a href='https://johanstick.fr/#contact' class='text-[#748CDA] hover:underline'>signaler le problème</a>.",
+		"defaultModalButtonContent": "Fermer",
+		"heroTitle": "Télécharger File Weight Loss",
+		"shareDownloadTitle": "FileWeightLoss pour macOS, Windows et Linux !",
+		"macos": {
+			"title": "Mac",
+			"content": "À partir de macOS Big Sur (11).<br>Processeurs Apple Silicon et Intel.",
+			"smallFormatContent": "Compatible à partir de macOS <i>Big Sur (11)</i> pour les Macs avec un processeur Intel ou Silicon",
+			"imgAlt": "Logo macOS",
+			"buttonContent": " Télécharger pour Mac",
+			"downloadInstructionsTitle": "Instructions pour macOS",
+			"downloadInstructionsContent": "File Weight Loss n'est pas <a class=\"italic text-[#748CDA] hover:underline\" href=\"https://support.apple.com/fr-fr/guide/mac-help/mchleab3a043/mac\">notarisé</a> par Apple, ce qui signifie qu'une étape supplémentaire est requise avant de pouvoir ouvrir l'app.\n<br><br>\n<ul class=\"space-y-2\">\n<li>1. Après avoir glissé l'app <b>File Weight Loss</b> dans votre dossier <b>Applications</b>, ouvrez-la depuis le Finder ou depuis le Launchpad.</li>\n<li>2. Ouvrez les <b>Réglages Systèmes</b> et allez dans l'onglet <b>Confidentialité et Sécurité</b>.</li>\n<li>3. Autoriser l'app à s'exécuter via la section <b>Sécurité</b>.</li>\n</ul><br>\nSinon, vous pouvez utiliser les commandes suivantes :\n<br><br>\n<div class=\"bg-black rounded-lg shadow px-5 py-4 mb-2\"><code>\n<span class=\"select-none\">$ </span> <span class=\"text-[#FAFAFA]/80\">sudo spctl --master-disable</span><br>\n<span class=\"select-none\">$ </span> <span class=\"text-[#FAFAFA]/80\">sudo chmod -R 777 /Applications/File\\ Weight\\ Loss.app</span><br>\n<span class=\"select-none\">$ </span> <span class=\"text-[#FAFAFA]/80\">xattr -d com.apple.quarantine /Applications/File\\ Weight\\ Loss.app</span><br>\n<span class=\"select-none\">$ </span> <span class=\"text-[#FAFAFA]/80\">xattr -cr /Applications/File\\ Weight\\ Loss.app</span>\n</code></div>"
+		},
+		"windows": {
+			"title": "Windows",
+			"content": "Compatible à partir de Windows 10.",
+			"smallFormatContent": "Compatible à partir de Windows 10",
+			"imgAlt": "Logo Windows",
+			"buttonContent": "Télécharger pour Windows"
+		},
+		"linux": {
+			"title": "Linux",
+			"content": "---",
+			"smallFormatContent": "---",
+			"imgAlt": "---",
+			"buttonContent": "Télécharger pour Linux"
+		},
+		"default": {
+			"title": "---",
+			"content": "---",
+			"smallFormatContent": "---",
+			"imgAlt": "---",
+			"buttonContent": "Télécharger sur votre ordinateur"
+		}
+	}
+}

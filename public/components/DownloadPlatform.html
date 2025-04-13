@@ -1,0 +1,27 @@
+<div class="place-items-center">
+    <div class="w-full h-full bg-[#0F0F0F] rounded-md border border-[#27272A] md:flex py-8 px-8 gap-8 shadow-md">
+        <div class="flex max-md:mb-6">
+            <div class="items-center place-content-start md:place-content-center max-[519px]:hidden">
+                <img src="{{ $img }}" alt="{{ $imgAlt }}" class="p-2 w-24 md:w-28">
+            </div>
+
+            <div class="items-center place-content-center min-[520px]:ml-7 md:ml-8">
+                <h3 class="font-[Rethink] text-white text-[26px] min-[2000px]:text-3xl font-medium">{{ $title }}</h3>
+                <p class="mt-1 min-[2000px]:mt-3 font-[Geist] text-[#A1A1AA] text-lg min-[2000px]:text-[22px] leading-relaxed">
+                    <span class="max-[519px]:hidden">{{ $content }}</span>
+					<span class="min-[520px]:hidden">{{ $smallFormatContent }}</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="items-center place-content-end md:place-content-center md:ml-auto">
+            <a href="javascript:autoDownload()" {{ this.componentAttribs.onclick ? 'onclick="' + this.componentAttribs.onclick + '"' : '' }} class="downloadButton__{{ $platformId }} w-full md:w-auto duration-200 font-[Geist] bg-[#FAFAFA] text-[#18181B] rounded-md text-[15px] min-[2000px]:text-xl px-7 py-6 min-[2000px]:p-8 h-10 leading-5 box-border inline-flex items-center justify-center text-center font-medium" style="box-shadow: 0 1px 2px 0 rgb(0 0 0 / .05);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="none" class="mr-0.5 md:mr-1.5">
+                    <path d="M16 6.66663V25.3333" stroke="#18181B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M25.3334 16L16.0001 25.3333L6.66675 16" stroke="#18181B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'navbar.download') }}
+            </a>
+        </div>
+    </div>
+</div>

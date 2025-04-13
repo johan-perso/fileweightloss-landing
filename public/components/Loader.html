@@ -1,0 +1,6 @@
+<div id="loader__background" class="bg-[#09090B] z-40 fixed inset-0 p-8 grid place-items-center {{ this.componentAttribs.ishomepage == 'true' ? 'duration-1000' : 'duration-500' }} w-screen h-screen {{ this.isDev ? 'opacity-20' : '' }}">
+	<div class="place-items-center">
+		<span id="loader__spinner" class="duration-200 {{ this.isDev ? 'opacity-10' : '' }}"></span>
+		<p id="loader__error" class="text-red-500 mt-4 text-xl text-center hidden"></p>
+	</div>
+</div>

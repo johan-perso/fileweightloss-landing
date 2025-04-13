@@ -1,0 +1,28 @@
+{
+	"/404.html": {
+		"options": {
+			"redirect": "/"
+		}
+	},
+	"/fr/index.html": {
+		"options": {
+			"showFile": "public/index.html"
+		}
+	},
+	"/en/index.html": {
+		"options": {
+			"showFile": "public/index.html"
+		}
+	},
+	"/fr/download.html": {
+		"options": {
+			"showFile": "public/download.html"
+		}
+	},
+	"/en/download.html": {
+		"options": {
+			"showFile": "public/download.html"
+		}
+	},
+	"translations/util.js": {}
+}

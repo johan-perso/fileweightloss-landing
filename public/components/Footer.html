@@ -1,0 +1,73 @@
+<footer id="footer" class="w-full my-14 min-[2000px]:my-24 max-sm:px-8 gap-x-3 sm:gap-x-6 min-[1007px]:gap-x-8 xl:gap-x-10 gap-y-5 md:gap-y-6 lg:gap-y-8 sm:px-8 md:px-12 xl:px-24">
+	<div class="grid grid-cols-2 min-[840px]:grid-cols-3 min-[1007px]:grid-cols-4 max-[450px]:place-self-center max-[450px]:gap-x-4 gap-y-8 px-3.5">
+		<div class="max-sm:space-y-4 w-full h-full">
+			<h3 class="font-[Rethink] text-[#FAFAFA] text-[26px] min-[2000px]:text-3xl font-medium">
+				<span class="max-[530px]:hidden">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'footer.downloadSection') }}</span>
+				<span class="min-[531px]:hidden">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'footer.downloadSectionShort') }}</span>
+			</h3>
+			<ul class="mt-2 min-[2000px]:mt-4 font-[Geist] text-[#A1A1AA] text-lg min-[2000px]:text-[22px] leading-relaxed min-[360px]:list-disc list-inside">
+				<li><a id="footer__macos" class="hover:text-[#748CDA] duration-200" href="/download">macOS<span class="max-[520px]:hidden">&nbsp;(Universal)</span></a></li>
+				<li><a id="footer__windows" class="hover:text-[#748CDA] duration-200" href="/download">Windows</a></li>
+				<li><a id="footer__linux" class="hover:text-[#748CDA] duration-200" href="/download">Linux</a></li>
+			</ul>
+		</div>
+
+		<div class="max-sm:space-y-4 w-full h-full">
+			<h3 class="font-[Rethink] text-[#FAFAFA] text-[26px] min-[2000px]:text-3xl font-medium">GitHub</h3>
+			<ul class="mt-2 min-[2000px]:mt-4 font-[Geist] text-[#A1A1AA] text-lg min-[2000px]:text-[22px] leading-relaxed min-[360px]:list-disc list-inside">
+				<li><a class="hover:text-[#748CDA] duration-200" href="https://github.com/el2zay/fileweightloss">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'footer.githubSource') }}</a></li>
+				<li><a class="hover:text-[#748CDA] duration-200" href="https://github.com/el2zay/fileweightloss/releases">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'footer.githubChangelog') }}</a></li>
+				<li><a class="hover:text-[#748CDA] duration-200" href="https://github.com/el2zay/fileweightloss/blob/main/LICENSE">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'footer.githubLicense') }}</a></li>
+			</ul>
+		</div>
+
+		<div class="max-sm:space-y-4 w-full h-full max-[1006px]:min-[840px]:hidden">
+			<h3 class="font-[Rethink] text-[#FAFAFA] text-[26px] min-[2000px]:text-3xl font-medium">Modules</h3>
+			<ul class="mt-2 min-[2000px]:mt-4 font-[Geist] text-[#A1A1AA] text-lg min-[2000px]:text-[22px] leading-relaxed min-[360px]:list-disc list-inside">
+				<li><a class="hover:text-[#748CDA] duration-200" href="https://ffmpeg.org/">FFMPEG</a></li>
+				<li><a class="hover:text-[#748CDA] duration-200" href="https://imagemagick.org/">Image Magick</a></li>
+				<li><a class="hover:text-[#748CDA] duration-200" href="https://ghostscript.com/">GhostScript</a></li>
+			</ul>
+		</div>
+
+		<div class="max-sm:space-y-4 w-full h-full">
+			<h3 class="font-[Rethink] text-[#FAFAFA] text-[26px] min-[2000px]:text-3xl font-medium">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'footer.moreSection') }}</h3>
+			<ul class="mt-2 min-[2000px]:mt-4 font-[Geist] text-[#A1A1AA] text-lg min-[2000px]:text-[22px] leading-relaxed min-[360px]:list-disc list-inside">
+				<li><a class="hover:text-[#748CDA] duration-200 pointer-events-none select-none opacity-50" href="https://fwl.bassinecorp.fr/app" aria-disabled="true">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'footer.webVersion') }}</a></li>
+				<li><a class="hover:text-[#748CDA] duration-200" href="https://github.com/el2zay/fileweightloss_cli">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'footer.cliVersion') }}</li>
+				<li><a class="hover:text-[#748CDA] duration-200" href="mailto:contact@bassinecorp.fr">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'footer.contact') }}</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="mt-12 min-[630px]:flex min-[630px]:justify-between items-center w-full">
+		<div class="font-[Rethink] text-[#A1A1AA] text-xl font-normal space-y-1">
+			<p>{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'footer.appDev') }}</p>
+			<p>{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'footer.webDev') }} <a class="text-[#748CDA] hover:underline" href="https://johanstick.fr">Johan</a>.&nbsp;<span class="min-[500px]:hidden"><br></span>© {{ new Date().getFullYear() }} <a class="text-[#748CDA] hover:underline" href="https://bassinecorp.fr">Bassine Corp</a>.</p>
+		</div>
+
+		<div class="min-[630px]:ml-3 max-[631px]:mt-6 flex items-center gap-4 shrink-0">
+			<a href="https://x.com/el2zay" aria-label="Twitter @el2zay" class="text-[#A1A1AA] hover:text-[#748CDA] duration-200">
+				<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 56 56" fill="none">
+					<path d="M51.3333 9.33322C51.3333 9.33322 49.7 14.2332 46.6666 17.2666C50.4 40.5999 24.7333 57.6332 4.66663 44.3332C9.79996 44.5666 14.9333 42.9332 18.6666 39.6666C6.99996 36.1666 1.16663 22.3999 6.99996 11.6666C12.1333 17.7332 20.0666 21.2332 28 20.9999C25.9 11.1999 37.3333 5.59989 44.3333 12.1332C46.9 12.1332 51.3333 9.33322 51.3333 9.33322Z" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			</a>
+
+			<a href="https://ko-fi.com/el2zay" aria-label="Buy Ko-Fi @el2zay" class="text-[#A1A1AA] hover:text-[#748CDA] duration-200">
+				<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 56 56" fill="none">
+					<path d="M23.3334 4.6665V9.33317" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+					<path d="M32.6667 4.6665V9.33317" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+					<path d="M37.3333 18.6665C37.9522 18.6665 38.5457 18.9123 38.9832 19.3499C39.4208 19.7875 39.6667 20.381 39.6667 20.9998V39.6665C39.6667 42.1419 38.6833 44.5158 36.933 46.2662C35.1827 48.0165 32.8087 48.9998 30.3333 48.9998H16.3333C13.858 48.9998 11.484 48.0165 9.73367 46.2662C7.98333 44.5158 7 42.1419 7 39.6665V20.9998C7 20.381 7.24583 19.7875 7.68342 19.3499C8.121 18.9123 8.71449 18.6665 9.33333 18.6665H42C44.4754 18.6665 46.8493 19.6498 48.5997 21.4002C50.35 23.1505 51.3333 25.5245 51.3333 27.9998C51.3333 30.4752 50.35 32.8492 48.5997 34.5995C46.8493 36.3498 44.4754 37.3332 42 37.3332H39.6667" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+					<path d="M14 4.6665V9.33317" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			</a>
+
+			<a href="https://github.com/el2zay" aria-label="GitHub @el2zay" class="text-[#A1A1AA] hover:text-[#748CDA] duration-200">
+				<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 56 56" fill="none">
+					<path d="M34.9999 51.3332V41.9998C35.3245 39.0768 34.4864 36.1435 32.6666 33.8332C39.6666 33.8332 46.6666 29.1665 46.6666 20.9998C46.8533 18.0832 46.0366 15.2132 44.3333 12.8332C44.9866 10.1498 44.9866 7.34984 44.3333 4.6665C44.3333 4.6665 41.9999 4.6665 37.3333 8.1665C31.1733 6.99984 24.8266 6.99984 18.6666 8.1665C13.9999 4.6665 11.6666 4.6665 11.6666 4.6665C10.9666 7.34984 10.9666 10.1498 11.6666 12.8332C9.96763 15.2036 9.14303 18.0897 9.33326 20.9998C9.33326 29.1665 16.3333 33.8332 23.3333 33.8332C22.4233 34.9765 21.7466 36.2832 21.3499 37.6832C20.9533 39.0832 20.8366 40.5532 20.9999 41.9998V51.3332" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+					<path d="M21.0001 42.0002C10.4767 46.6668 9.33342 37.3335 4.66675 37.3335" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			</a>
+		</div>
+	</div>
+</footer>

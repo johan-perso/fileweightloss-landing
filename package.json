@@ -1,0 +1,13 @@
+{
+    "private": true,
+    "name": "fileweightloss-landing",
+    "version": "0.0.1",
+    "scripts": {
+        "start": "roc start",
+        "dev": "roc dev",
+        "build": "roc build"
+    },
+    "dependencies": {
+        "roc-framework": "^4.0.0"
+    }
+}

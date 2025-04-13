@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).detectLang(this.routePath) }}" class="bg-[#09090B] scroll-smooth">
+<head>
+	<DefaultHead pageName="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.pageName') }}"></DefaultHead>
+
+	<script src="/main.js" async></script>
+
+	<link rel="preload" href="/fonts/rethink-sans-v5-latin-500.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/rethink-sans-v5-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/geist-v1-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/geist-v1-latin-500.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/poppins-v21-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+<body class="text-sm leading-10">
+	<JsRequired></JsRequired>
+	<Loader isHomepage="{{ this.routeFile.endsWith('index.html') ? 'true' : 'false' }}"></Loader>
+
+	<!-- Modal -->
+	<Modal
+		idPrefix="download"
+		title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.defaultModalTitle') }}"
+		content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.defaultModalContent') }}"
+		buttonContent="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.defaultModalButtonContent') }}"
+	></Modal>
+
+	<div>
+		<!-- Navbar -->
+		<Navbar isHomepage="{{ this.routeFile.endsWith('index.html') ? 'true' : 'false' }}"></Navbar>
+
+		<!-- Titre -->
+		<div class="mt-16 mb-12 flex justify-center px-6">
+			<h2 class="w-full max-sm:mt-4 text-center font-[Rethink] text-3xl xl:text-4xl min-[2000px]:text-6xl leading-tight min-[2000px]:leading-[1.3] font-semibold text-white">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.heroTitle') }}</h2>
+		</div>
+
+		<!-- Plateformes -->
+		<div id="platforms" class="w-full flex items-center justify-center mb-32">
+			<div class="w-full max-w-6xl px-8 grid gap-8">
+				<DownloadPlatform
+					platformId="macos"
+					title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.macos.title') }}"
+					content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.macos.content') }}"
+					smallFormatContent="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.macos.smallFormatContent') }}"
+					img="/medias/platforms/macos.png"
+					imgAlt="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.macos.imgAlt') }}"
+					onclick="showModal('download', 'macos')"
+				></DownloadPlatform>
+				<DownloadPlatform
+					platformId="windows"
+					title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.windows.title') }}"
+					content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.windows.content') }}"
+					smallFormatContent="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.windows.smallFormatContent') }}"
+					img="/medias/platforms/windows.png"
+					imgAlt="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.windows.imgAlt') }}"
+				></DownloadPlatform>
+			</div>
+			<!-- <div class="px-8 grid md:grid-cols-2 gap-8">
+				<DownloadPlatform
+					title="Mac"
+					content="macOS Big Sur et supérieur<br>Apple Silicon et Intel"
+					img="/medias/platforms/macos.png"
+					imgAlt="Logo macOS"
+				></DownloadPlatform>
+				<DownloadPlatform
+					title="Windows"
+					content="Windows 10 et supérieur"
+					img="/medias/platforms/windows.png"
+					imgAlt="Logo Windows"
+				></DownloadPlatform>
+				<DownloadPlatform
+					title="Debian (.deb)"
+					content="Distributions basés sous Debian tels que Ubuntu, ZorinOS, Linux Mint, etc..."
+					img="/medias/platforms/debian.png"
+					imgAlt="Logo Debian"
+				></DownloadPlatform>
+				<DownloadPlatform
+					title="Red Hat (.rpm)"
+					content="Distributions basés sous Red Hat tels que Fedora, CentOS, etc..."
+					img="/medias/platforms/redhat.png"
+					imgAlt="Logo Red Hat"
+				></DownloadPlatform>
+				<span>Note: Si faut combler on rajoute une option "Essayer maintenant" avec le logo du navigateur en cours d'utilisation (user agent et un switch case)</span>
+			</div> -->
+		</div>
+
+		<!-- Footer -->
+		<Footer></Footer>
+	</div>
+</body>
+</html>

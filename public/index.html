@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).detectLang(this.routePath) }}" class="bg-[#09090B] scroll-smooth">
+<head>
+	<DefaultHead></DefaultHead>
+
+	<script src="/main.js" async></script>
+
+	<link rel="preload" href="/fonts/rethink-sans-v5-latin-500.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/rethink-sans-v5-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/rethink-sans-v5-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/geist-v1-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/geist-v1-latin-500.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/poppins-v21-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+<body class="text-sm leading-10">
+	<JsRequired></JsRequired>
+	<Loader isHomepage="{{ this.routeFile.endsWith('index.html') ? 'true' : 'false' }}"></Loader>
+
+	<!-- Modal -->
+	<Modal
+		idPrefix="download"
+		title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.defaultModalTitle') }}"
+		content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.defaultModalContent') }}"
+		buttonContent="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.defaultModalButtonContent') }}"
+	></Modal>
+
+	<div>
+		<!-- Navbar -->
+		<Navbar isHomepage="{{ this.routeFile.endsWith('index.html') ? 'true' : 'false' }}"></Navbar>
+
+		<!-- Hero -->
+		<div id="hero" class="min-h-[calc(100svh-79px)] w-full flex items-center justify-center">
+			<div class="mt-10 mb-16">
+				<div class="flex justify-center px-6">
+					<h2 class="w-full max-w-xs xl:max-w-md min-[2000px]:max-w-2xl max-sm:mt-4 text-center font-[Rethink] text-3xl xl:text-4xl min-[2000px]:text-6xl leading-tight min-[2000px]:leading-[1.3] font-semibold text-white">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'hero.title') }}</h2>
+				</div>
+
+				<div class="mt-8 min-[2000px]:mt-10 flex justify-center">
+					<a href="javascript:autoDownload()" class="downloadButton__universal duration-200 bg-[#FAFAFA] text-[#18181B] rounded-md text-[15px] min-[2000px]:text-xl px-7 py-6 min-[2000px]:p-8 h-10 leading-5 box-border inline-flex items-center justify-center text-center font-medium" style="box-shadow: 0 1px 2px 0 rgb(0 0 0 / .05);"></a>
+				</div>
+
+				<div class="my-14 min-[2000px]:my-24 max-sm:px-8 presentationImage__container">
+					<img src="/medias/demos/screenshot_width.png" loading="eager" alt="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'hero.screensAlt') }}" class="presentationImage__width max-sm:hidden mx-auto rounded-md w-full max-w-[32rem] lg:max-w-[40rem] min-[2000px]:max-w-3xl" style="transition: transform 0.2s ease-out; box-shadow: 0px 22px 72px 24px rgba(62, 140, 238, 0.09), 0px -22px 72px 24px rgba(62, 140, 238, 0.09), -64px 0px 72px 24px rgba(62, 140, 238, 0.02), 64px 0px 72px 24px rgba(62, 140, 238, 0.02);">
+					<img src="/medias/demos/screenshot_height.png" loading="eager" alt="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'hero.screensAlt') }}" class="presentationImage__height sm:hidden mx-auto rounded-md w-full max-w-[32rem]" style="box-shadow: 0px 22px 72px 8px rgba(62, 140, 238, 0.09), 0px -22px 72px 8px rgba(62, 140, 238, 0.09), -64px 0px 72px 24px rgba(62, 140, 238, 0.02), 64px 0px 72px 24px rgba(62, 140, 238, 0.02);">
+				</div>
+			</div>
+		</div>
+
+		<!-- Comparatif -->
+		<div id="comparison" class="w-full flex items-center justify-center select-text">
+			<div class="comparison__wrapper w-full my-14 min-[2000px]:my-24" id="comparison__container">
+				<video playsinline muted id="comparison__videoAfter" alt="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'comparison.videoAfterAlt') }}" preload="none" poster="/medias/demos/dronefootages_after.webp" src="/medias/demos/dronefootages_after.mp4" class="comparison__videoRight mx-auto rounded-md"></video>
+				<video playsinline muted id="comparison__videoBefore" alt="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'comparison.videoBeforeAlt') }}" preload="none" poster="/medias/demos/dronefootages_before.webp" src="/medias/demos/dronefootages_before.mp4" class="comparison__videoLeft mx-auto rounded-md"></video>
+
+				<div class="comparison__text-overlay-left py-2 px-3.5 md:py-2.5 md:px-6">
+					<p class="text-xs md:text-base">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'comparison.videoBeforeText') }}<br>36.8 MB ― 1080p</p>
+				</div>
+
+				<div class="comparison__text-overlay-right py-2 px-3.5 md:py-2.5 md:px-6">
+					<p class="text-xs md:text-base">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'comparison.videoAfterText') }}<br>7.9 MB ― 1080p</p>
+				</div>
+
+				<div class="comparison__sliderHandle"></div>
+				<div class="comparison__sliderButton">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48" fill="none">
+						<path d="M36 16L44 24L36 32" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+						<path d="M4 24H44" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+						<path d="M12 16L4 24L12 32" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+					  </svg>
+				</div>
+			</div>
+		</div>
+
+		<!-- Top Features -->
+		<div id="features" class="w-full flex items-center justify-center">
+			<div class="w-full my-14 min-[2000px]:my-24 max-sm:px-8 space-y-8">
+				<SectionFeature
+					title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'features.quality.title') }}"
+					content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'features.quality.content') }}"
+					secondaryContent="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'features.quality.secondaryContent') }}"
+					imgSrcSmall="/medias/features/small/quality.webp"
+					imgSrcLarge="/medias/features/large/quality.webp"
+					imgAlt="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'features.quality.imgAlt') }}"
+					position="left"
+				></SectionFeature>
+				<SectionFeature
+					title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'features.conversions.title') }}"
+					content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'features.conversions.content') }}"
+					secondaryContent="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'features.conversions.secondaryContent') }}"
+					imgSrcSmall="/medias/features/small/conversions.webp"
+					imgSrcLarge="/medias/features/large/conversions.webp"
+					imgAlt="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'features.conversions.imgAlt') }}"
+					position="right"
+				></SectionFeature>
+				<SectionFeature
+					title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'features.offline.title') }}"
+					content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'features.offline.content') }}"
+					secondaryContent="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'features.offline.secondaryContent') }}"
+					imgSrcSmall="/medias/features/small/offline.webp"
+					imgSrcLarge="/medias/features/large/offline.webp"
+					imgAlt="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'features.offline.imgAlt') }}"
+					position="left"
+				></SectionFeature>
+			</div>
+		</div>
+
+		<!-- CTA -->
+		<div id="cta" class="w-full flex items-center justify-center">
+			<div class="xl:w-[90%] my-14 min-[2000px]:my-24 px-12">
+				<div class="bg-white rounded-md min-[980px]:flex max-sm:space-y-4 py-8 px-8 sm:gap-8 shadow-md items-center">
+					<div class="h-full w-full">
+						<h3 class="font-[Rethink] text-[#09090B] text-[26px] min-[2000px]:text-3xl font-bold md:max-w-[84%]">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'cta.title') }}</h3>
+						<p class="mt-1 lg:mt-3 min-[2000px]:mt-3 font-[Geist] text-[#71717A] text-lg min-[2000px]:text-[22px] leading-relaxed md:max-w-[82%]">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'cta.content') }}</p>
+					</div>
+					<div class="h-full max-[979px]:mt-8 max-[979px]:flex max-[979px]:items-center">
+						<a href="javascript:autoDownload()" class="downloadButton__universal max-[596px]:mt-3 max-[596px]:w-full duration-200 bg-[#09090B] text-[#FAFAFA] rounded-md text-[15px] min-[2000px]:text-xl px-[29px] py-[15px] min-[2000px]:px-8 min-[2000px]:py-6 sm:whitespace-nowrap leading-5 box-border inline-flex items-center justify-center text-center font-medium" style="box-shadow: 0 1px 2px 0 rgb(0 0 0 / .05);">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'cta.download') }}</a>
+						<p class="min-[980px]:text-center max-[596px]:hidden max-[979px]:ml-6 max-[979px]:mb-0.5 h-full max-[979px]:w-[20%] max-[844px]:w-[35%] min-[980px]:mt-2 leading-normal"><a href="download" class="font-[Geist] text-[#71717A] text-sm min-[2000px]:text-md hover:underline">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'cta.downloadAnotherPlatform') }}</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Vidéos démos -->
+		<div id="demos" class="w-full flex items-center justify-center">
+			<div class="w-full my-14 min-[2000px]:my-24 max-sm:px-8">
+				<video id="demos__video" playsinline muted src="/medias/demos/capture_video.mp4" alt="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'demos.videoAlt') }}" class="demoVideo mx-auto rounded-md w-full max-w-[32rem] lg:max-w-[60rem] min-[2000px]:max-w-[82rem]"></video>
+			</div>
+		</div>
+
+		<!-- Autres features -->
+		<div id="morefeatures" class="w-full grid grid-cols-1 min-[668px]:grid-cols-2 min-[1007px]:grid-cols-3 items-center justify-center my-14 min-[2000px]:my-24 max-sm:px-8 gap-x-3 sm:gap-x-6 min-[1007px]:gap-x-8 xl:gap-x-10 gap-y-5 md:gap-y-6 lg:gap-y-8 sm:px-8 md:px-12 xl:px-24">
+			<BlockFeature
+				title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.advancedSupports.title') }}"
+				content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.advancedSupports.content') }}"
+			></BlockFeature>
+			<BlockFeature
+				title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.fast.title') }}"
+				content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.fast.content') }}"
+			></BlockFeature>
+			<BlockFeature
+				title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.free.title') }}"
+				content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.free.content') }}"
+			></BlockFeature>
+			<BlockFeature
+				title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.efficient.title') }}"
+				content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.efficient.content') }}"
+			></BlockFeature>
+			<BlockFeature
+				title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.browser.title') }}"
+				content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.browser.content') }}"
+			></BlockFeature>
+			<BlockFeature
+				hideOnMobile="true"
+				title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.multilanguage.title') }}"
+				content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.multilanguage.content') }}"
+			></BlockFeature>
+		</div>
+
+		<!-- Footer -->
+		<Footer></Footer>
+	</div>
+</body>
+</html>

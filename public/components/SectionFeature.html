@@ -1,0 +1,12 @@
+<div class="bg-[#0F0F0F] rounded-md border border-[#27272A] sm:flex max-sm:space-y-4 sm:w-[85%] md:w-2/3 lg:w-4/6 xl:w-1/2 py-8 px-8 gap-8 shadow-md {{ this.componentAttribs.position == 'right' ? 'sm:ml-auto sm:mr-8 md:mr-12 lg:mr-24' : 'sm:ml-8 md:ml-12 lg:ml-24' }}">
+	<div>
+		<h3 class="font-[Rethink] text-white text-[26px] min-[2000px]:text-3xl font-medium">{{ $title }}</h3>
+		<p class="mt-1 min-[2000px]:mt-3 font-[Geist] text-[#A1A1AA] text-lg min-[2000px]:text-[22px] leading-relaxed">
+			{{ $content }}
+			<span class="max-2xl:hidden"><br><br>{{ $secondaryContent }}</span>
+		</p>
+	</div>
+
+	<img src="{{ $imgSrcSmall }}" alt="{{ $imgAlt }}" class="rounded-md shadow sm:hidden">
+	<img src="{{ $imgSrcLarge }}" alt="{{ $imgAlt }}" class="mx-auto rounded-md shadow w-40 min-[785px]:w-48 min-[2000px]:w-60 h-40 min-[785px]:h-48 min-[2000px]:h-60 max-sm:hidden">
+</div>

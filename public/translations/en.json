@@ -1,0 +1,139 @@
+{
+	"global": {
+		"clickHereInfinitif": "Click here",
+		"clickHere": "Click here",
+		"close": "Close"
+	},
+	"head": {
+		"description": "Shrink the size of your video, audio, and PDF files. Available for free on Windows, macOS, and Linux."
+	},
+	"jsRequired": {
+		"title": "JavaScript disabled",
+		"content": "To visit this website, you need to enable JavaScript in your browser settings. <a class='hover:underline text-blue-400' href='https://www.wikihow.com/enable-JavaScript'>Click here</a> to learn more."
+	},
+	"navbar": {
+		"features": "Features",
+		"download": "Download",
+		"opensource": "Open Source",
+		"try": "Try",
+		"tryOnBrowser": "in your browser",
+		"tryHere": "here"
+	},
+	"hero": {
+		"title": "Make your files get in shape 🏋️‍♂️",
+		"screensAlt": "App screenshot"
+	},
+	"comparison": {
+		"videoBeforeAlt": "Before Comparison",
+		"videoAfterAlt": "After Comparison",
+		"videoBeforeText": "Original",
+		"videoAfterText": "Medium Settings"
+	},
+	"features": {
+		"quality": {
+			"title": "Perfect Balance",
+			"content": "Choose from multiple presets while compressing your files. Save space without impacting much on the final result.",
+			"secondaryContent": "Settings adjust video quality without changing resolution. FPS and audio quality will be reduced below the 'Medium' preset.",
+			"imgAlt": "Adjust compression quality"
+		},
+		"conversions": {
+			"title": "Conversions",
+			"content": "Keep only the audio track from a video, or create a video from an MP3 file! You can also convert to a GIF.",
+			"secondaryContent": "For advanced cases, you can even set a custom thumbnail for your audio file and choose the number of FPS for your GIFs.",
+			"imgAlt": "Convert your files"
+		},
+		"offline": {
+			"title": "Offline",
+			"content": "Rest assured your data never passes through a server, the app works without any internet access. Your files, your data, no limits.",
+			"secondaryContent": "Processing is handled locally using modules included during FileWeightLoss installation or downloadable from settings.",
+			"imgAlt": "Works offline"
+		}
+	},
+	"cta": {
+		"title": "Download File Weight Loss and reduce your file sizes by up to 95%!",
+		"content": "Make storing and sharing large files easier on platforms with storage limits, and boost your productivity.",
+		"download": "Download",
+		"downloadAnotherPlatform": "Download for another platform"
+	},
+	"demos": {
+		"videoAlt": "Video compression demo",
+		"pdfAlt": "PDF document compression demo"
+	},
+	"morefeatures": {
+		"advancedSupports": {
+			"title": "Advanced Supports",
+			"content": "Most common video, audio, and photo formats are supported. A module for PDF documents is also available."
+		},
+		"fast": {
+			"title": "Simple and Fast",
+			"content": "Don't waste time, open File Weight Loss, drag your files in, and start compressing without waiting."
+		},
+		"free": {
+			"title": "Free and Ad-free",
+			"content": "Completely free, no ads, open-source, and available on all desktop systems (macOS, Windows, Linux)."
+		},
+		"efficient": {
+			"title": "Up to 95%",
+			"content": "Push the limits and compress your videos by up to 95% with powerful optimizations!"
+		},
+		"browser": {
+			"title": "Try in your Browser",
+			"content": "Soon available to try without downloading the app via a limited version offering the same compression power."
+		},
+		"multilanguage": {
+			"title": "Multilingual",
+			"content": "Fully translated into English and French. We also won't add language-dependent properties to your files."
+		}
+	},
+	"footer": {
+		"downloadSection": "Download",
+		"downloadSectionShort": "Install",
+		"githubSource": "Source code",
+		"githubChangelog": "Changelog",
+		"githubLicense": "License",
+		"moreSection": "More",
+		"webVersion": "Web Version (soon)",
+		"cliVersion": "<span class='max-[450px]:hidden'>Terminal&nbsp;</span>Version",
+		"contact": "Contact",
+		"appDev": "Developed in Paris &nbsp;🥐&nbsp; by Elie.",
+		"webDev": "Landing made by "
+	},
+	"download": {
+		"pageName": "Download",
+		"defaultModalTitle": "Download",
+		"defaultModalContent": "An issue occurred while rendering this component. Please try again later and <a href='https://johanstick.fr/#contact' class='text-[#748CDA] hover:underline'>report this problem</a>.",
+		"defaultModalButtonContent": "Close",
+		"heroTitle": "Download File Weight Loss",
+		"shareDownloadTitle": "FileWeightLoss for macOS, Windows, and Linux!",
+		"macos": {
+			"title": "Mac",
+			"content": "From macOS Big Sur (11).<br>Apple Silicon and Intel CPUs.",
+			"smallFormatContent": "Compatible with macOS <i>Big Sur (11)</i> or later for Intel and Silicon Macs",
+			"imgAlt": "macOS logo",
+			"buttonContent": " Download for Mac",
+			"downloadInstructionsTitle": "Instructions for macOS",
+			"downloadInstructionsContent": "File Weight Loss is not <a class=\"italic text-[#748CDA] hover:underline\" href=\"https://support.apple.com/en-us/guide/mac-help/mchleab3a043/mac\">notarized</a> by Apple, which means an additional step is required before you can open the app.\n<br><br>\n<ul class=\"space-y-2\">\n<li>1. After dragging the <b>File Weight Loss</b> app into your <b>Applications</b> folder, open it from the Finder or Launchpad.</li>\n<li>2. Open <b>System Settings</b> and go to the <b>Privacy & Security</b> tab.</li>\n<li>3. Allow the app to run from the <b>Security</b> section.</li>\n</ul><br>\nAlternatively, you can use the following commands:\n<br><br>\n<div class=\"bg-black rounded-lg shadow px-5 py-4 mb-2\"><code>\n<span class=\"select-none\">$ </span> <span class=\"text-[#FAFAFA]/80\">sudo spctl --master-disable</span><br>\n<span class=\"select-none\">$ </span> <span class=\"text-[#FAFAFA]/80\">sudo chmod -R 777 /Applications/File\\ Weight\\ Loss.app</span><br>\n<span class=\"select-none\">$ </span> <span class=\"text-[#FAFAFA]/80\">xattr -d com.apple.quarantine /Applications/File\\ Weight\\ Loss.app</span><br>\n<span class=\"select-none\">$ </span> <span class=\"text-[#FAFAFA]/80\">xattr -cr /Applications/File\\ Weight\\ Loss.app</span>\n</code></div>"
+		},
+		"windows": {
+			"title": "Windows",
+			"content": "Compatible with Windows 10 and above.",
+			"smallFormatContent": "Compatible with Windows 10 and later",
+			"imgAlt": "Windows logo",
+			"buttonContent": "Download for Windows"
+		},
+		"linux": {
+			"title": "Linux",
+			"content": "---",
+			"smallFormatContent": "---",
+			"imgAlt": "---",
+			"buttonContent": "Download for Linux"
+		},
+		"default": {
+			"title": "---",
+			"content": "---",
+			"smallFormatContent": "---",
+			"imgAlt": "---",
+			"buttonContent": "Download on your computer"
+		}
+	}
+}
