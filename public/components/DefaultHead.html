@@ -16,7 +16,8 @@
 	const languages = ['en', 'fr']
 	const language = window.location.pathname.replace('/', '').slice(0, 2) // le tag dans le document a toujours une valeur par défaut, c'est mieux comme ça
 	if(!languages.includes(language)){
-		var browserLanguage = navigator.language?.split('-')?.[0] || 'en'
+		var browserLanguage = 'en'
+		if(navigator.language && navigator.language.split('-').length) browserLanguage = navigator.language.split('-')[0]
 		if(!languages.includes(browserLanguage)) browserLanguage = 'en'
 
 		console.warn(`Redirecting to page with language (${browserLanguage}) because not found in url pathname`)

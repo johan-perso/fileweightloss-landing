@@ -11,7 +11,7 @@ window.onerror = async function(error){
 	}
 
 	if(document.getElementById('loader__error')){
-		document.getElementById('loader__error').innerText = error?.message || error?.stack || error
+		document.getElementById('loader__error').innerText = error.message || error.stack || error
 		document.getElementById('loader__error').classList.remove('hidden')
 	} else {
 		console.log("(Error Grabber) Loader isn't present on page.")
@@ -133,7 +133,13 @@ window.onload = async function(){
 	const isOsSupported = checkOsSupported()
 	console.log("Detected system:", os)
 
-	const autoloadVideos = !roc.isDev && !navigator?.connection?.saveData
+	var autoloadVideos = false
+	try {
+		autoloadVideos = !roc.isDev && !navigator.connection.saveData
+	} catch (e){
+		console.warn("failed to define autoloadVideos")
+		console.warn(e)
+	}
 	console.log("Autoloading videos:", autoloadVideos)
 
 	// Masquer le chargement s'il reste trop longtemps
@@ -154,8 +160,8 @@ window.onload = async function(){
 
 	// Obtenir les traductions nécessaires
 	translations = await getTranslations(language) // définit par un autre script
-	demosVideos.find(video => video.id == 'video').alt = translations?.demos?.videoAlt || 'No alt text found'
-	demosVideos.find(video => video.id == 'pdf').alt = translations?.demos?.pdfAlt || 'No alt text found'
+	demosVideos.find(video => video.id == 'video').alt = translations.demos.videoAlt || 'No alt text found'
+	demosVideos.find(video => video.id == 'pdf').alt = translations.demos.pdfAlt || 'No alt text found'
 
 	// Gérer les boutons de téléchargement universel (s'adapte à l'OS en cours)
 	const downloadButtons = document.querySelectorAll('.downloadButton__universal')
@@ -165,21 +171,21 @@ window.onload = async function(){
 			switch(os){
 				case 'macos':
 					button.style.fontFamily = 'SF Pro, sans-serif'
-					button.innerText = translations?.download?.macos?.buttonContent || 'macOS'
+					button.innerText = translations.download.macos.buttonContent || 'macOS'
 					button.onclick = () => showModal('download', 'macos')
 					break
 				case 'windows':
 					button.style.fontFamily = 'Geist, sans-serif'
-					button.innerText = translations?.download?.windows?.buttonContent || 'Windows'
+					button.innerText = translations.download.windows.buttonContent || 'Windows'
 					break
 				case 'linux':
 					button.style.fontFamily = 'Geist, sans-serif'
-					button.innerText = translations?.download?.linux?.buttonContent || 'Linux'
+					button.innerText = translations.download.linux.buttonContent || 'Linux'
 					break
 				default:
 					button.href = 'javascript:shareDownload()'
 					button.style.fontFamily = 'Geist, sans-serif'
-					button.innerText = translations?.download?.default?.buttonContent || 'Custom'
+					button.innerText = translations.download.default.buttonContent || 'Custom'
 					break
 			}
 		})
@@ -402,11 +408,11 @@ window.onkeydown = function(e){
 window.onclick = function(e){
 	if(!modalShown) return console.log("Ignoring click because zero modals shown")
 	var el = e.target
-	while(el && !el.id?.startsWith('modal_')){
+	while(el && !el.id.startsWith('modal_')){
 		el = el.parentElement
 	}
 
-	if(el && el.id?.startsWith('modal_') && !el.id?.endsWith('__backdrop')) return console.log("Ignoring click because modal was clicked")
+	if(el && el.id.startsWith('modal_') && !el.id.endsWith('__backdrop')) return console.log("Ignoring click because modal was clicked")
 
 	const modals = document.querySelectorAll('[id^="modal_"]:not([id$="__backdrop"])')
 	for(const modal of modals){
@@ -428,8 +434,8 @@ async function showModal(idPrefix, context){
 		setTimeout(() => showModal(idPrefix, context), 500) // Certains navs peuvent fermer le modal au début du téléchargement
 		setTimeout(() => showModal(idPrefix, context), 1000) // Certains navs peuvent fermer le modal au début du téléchargement
 
-		document.getElementById(`modal_${idPrefix}__title`).innerText = translations?.download?.macos?.downloadInstructionsTitle || 'Instructions'
-		document.getElementById(`modal_${idPrefix}__content`).innerHTML = translations?.download?.macos?.downloadInstructionsContent || 'jsp on trouve pas le texte, carrément jparle français sayer'
+		document.getElementById(`modal_${idPrefix}__title`).innerText = translations.download.macos.downloadInstructionsTitle || 'Instructions'
+		document.getElementById(`modal_${idPrefix}__content`).innerHTML = translations.download.macos.downloadInstructionsContent || 'jsp on trouve pas le texte, carrément jparle français sayer'
 	}
 
 	var modal__backdrop = document.getElementById(`modal_${idPrefix}__backdrop`)
@@ -550,7 +556,7 @@ function shareDownload(){
 	if(navigator.canShare && navigator.share){
 		navigator.share({
 			url: 'https://fwl.bassinecorp.fr/download',
-			title: translations?.download?.shareDownloadTitle || undefined
+			title: translations.download.shareDownloadTitle || undefined
 		})
 	} else location.href = '/download'
 }

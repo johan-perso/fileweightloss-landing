@@ -2,7 +2,7 @@
 
 # FileWeightLoss
 
-Landing page for the files compression app FileWeightLoss. See GitHub repo [here](https://github.com/el2zay/fileweightloss).
+Landing page for the file compression app FileWeightLoss. See GitHub repo [here](https://github.com/el2zay/fileweightloss).
 
 Website is available on [fwl.bassinecorp.fr](https://fwl.bassinecorp.fr).
 
