@@ -21,7 +21,7 @@
 		if(!languages.includes(browserLanguage)) browserLanguage = 'en'
 
 		console.warn(`Redirecting to page with language (${browserLanguage}) because not found in url pathname`)
-		const finalRedirect = `${browserLanguage}/${window.location.pathname.startsWith('/')? window.location.pathname.replace('/', '') : window.location.pathname}${window.location.hash}`
+		const finalRedirect = `/${browserLanguage}/${window.location.pathname.startsWith('/') ? window.location.pathname.replace('/', '') : window.location.pathname}${window.location.hash}`
 		console.warn(finalRedirect)
 		window.location.href = finalRedirect
 	}
