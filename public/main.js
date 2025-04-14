@@ -208,6 +208,7 @@ window.onload = async function(){
 
 	// Gérer la section comparaison entre deux vidéos
 	if(document.getElementById('comparison')){
+		console.log("Setting up comparison section")
 		const container = document.getElementById('comparison__container')
 		const button = document.querySelector('.comparison__sliderButton')
 		const videoBefore = document.getElementById('comparison__videoBefore')
@@ -258,6 +259,7 @@ window.onload = async function(){
 
 		if(autoloadVideos){
 			// Forcer le chargement des vidéos, et attendre le chargement
+			console.log("Loading comparison videos")
 			try {
 				videoBefore.load()
 				videoAfter.load()
@@ -267,6 +269,7 @@ window.onload = async function(){
 			}
 			await waitForVideoLoaded(videoBefore)
 			await waitForVideoLoaded(videoAfter)
+			console.log("Loaded comparison videos")
 			// await new Promise((resolve) => { if(videoBefore.readyState >= 4) resolve(); else videoBefore.addEventListener('canplaythrough', resolve) })
 			// await new Promise((resolve) => { if(videoAfter.readyState >= 4) resolve(); else videoAfter.addEventListener('canplaythrough', resolve) })
 		}
