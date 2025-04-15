@@ -129,6 +129,10 @@ async function preload(url){
 }
 
 window.onload = async function(){
+	var pageName = window.location.pathname.endsWith('/') ? window.location.pathname.slice(0, -1) : window.location.pathname;
+	if(pageName.startsWith('/')) pageName = pageName.slice(1);
+	if(pageName.split('/').length > 1) pageName = pageName.split('/').slice(1).join('/');
+
 	const os = getOS()
 	const isOsSupported = checkOsSupported()
 	console.log("Detected system:", os)
@@ -152,59 +156,64 @@ window.onload = async function(){
 		}
 	}, 15000)
 
-	// Gérer les liens de téléchargement dans le pied de page
-	await fetchVersions() // va remplir l'objet versionsDetails
-	if(document.getElementById('footer__macos')) document.getElementById('footer__macos').href = versionsDetails.macos
-	if(document.getElementById('footer__windows')) document.getElementById('footer__windows').href = versionsDetails.windows
-	if(document.getElementById('footer__linux')) document.getElementById('footer__linux').href = versionsDetails.linux
-
 	// Obtenir les traductions nécessaires
 	translations = await getTranslations(language) // définit par un autre script
 	demosVideos.find(video => video.id == 'video').alt = translations.demos.videoAlt || 'No alt text found'
 	demosVideos.find(video => video.id == 'pdf').alt = translations.demos.pdfAlt || 'No alt text found'
 
-	// Gérer les boutons de téléchargement universel (s'adapte à l'OS en cours)
-	const downloadButtons = document.querySelectorAll('.downloadButton__universal')
-	if(downloadButtons.length){
-		// Ajouter le texte (lien par défaut déjà inclus de base)
-		downloadButtons.forEach((button) => {
-			switch(os){
-				case 'macos':
-					button.style.fontFamily = 'SF Pro, sans-serif'
-					button.innerText = translations.download.macos.buttonContent || 'macOS'
-					button.onclick = () => showModal('download', 'macos')
-					break
-				case 'windows':
-					button.style.fontFamily = 'Geist, sans-serif'
-					button.innerText = translations.download.windows.buttonContent || 'Windows'
-					break
-				case 'linux':
-					button.style.fontFamily = 'Geist, sans-serif'
-					button.innerText = translations.download.linux.buttonContent || 'Linux'
-					break
-				default:
-					button.href = 'javascript:shareDownload()'
-					button.style.fontFamily = 'Geist, sans-serif'
-					button.innerText = translations.download.default.buttonContent || 'Custom'
-					break
-			}
-		})
+	if(pageName != 'comparison'){
+		// Gérer les liens de téléchargement dans le pied de page
+		await fetchVersions() // va remplir l'objet versionsDetails
+		if(document.getElementById('footer__macos')) document.getElementById('footer__macos').href = versionsDetails.macos
+		if(document.getElementById('footer__windows')) document.getElementById('footer__windows').href = versionsDetails.windows
+		if(document.getElementById('footer__linux')) document.getElementById('footer__linux').href = versionsDetails.linux
 
-		// Si on est sur une plateforme supportée
-		if(isOsSupported && versionsDetails[os]) downloadButtons.forEach((button) => {
-			button.href = versionsDetails[os]
+		// Gérer les boutons de téléchargement universel (s'adapte à l'OS en cours)
+		const downloadButtons = document.querySelectorAll('.downloadButton__universal')
+		if(downloadButtons.length){
+			// Ajouter le texte (lien par défaut déjà inclus de base)
+			downloadButtons.forEach((button) => {
+				switch(os){
+					case 'macos':
+						button.style.fontFamily = 'SF Pro, sans-serif'
+						button.innerText = translations.download.macos.buttonContent || 'macOS'
+						button.onclick = () => showModal('download', 'macos')
+						break
+					case 'windows':
+						button.style.fontFamily = 'Geist, sans-serif'
+						button.innerText = translations.download.windows.buttonContent || 'Windows'
+						break
+					case 'linux':
+						button.style.fontFamily = 'Geist, sans-serif'
+						button.innerText = translations.download.linux.buttonContent || 'Linux'
+						break
+					default:
+						button.href = 'javascript:shareDownload()'
+						button.style.fontFamily = 'Geist, sans-serif'
+						button.innerText = translations.download.default.buttonContent || 'Custom'
+						break
+				}
+			})
+
+			// Si on est sur une plateforme supportée
+			if(isOsSupported && versionsDetails[os]) downloadButtons.forEach((button) => {
+				button.href = versionsDetails[os]
+			})
+		}
+
+		// Gérer les boutons de téléchargement spécifiques (page download)
+		Object.keys(versionsDetails).forEach((os) => {
+			if(os == 'expireDate') return
+
+			const downloadButtons = document.querySelectorAll(`.downloadButton__${os}`)
+			if(downloadButtons.length) downloadButtons.forEach((button) => {
+				button.href = versionsDetails[os]
+			})
 		})
+	} else {
+		autoloadVideos = false
+		showModal('confirm')
 	}
-
-	// Gérer les boutons de téléchargement spécifiques (page download)
-	Object.keys(versionsDetails).forEach((os) => {
-		if(os == 'expireDate') return
-
-		const downloadButtons = document.querySelectorAll(`.downloadButton__${os}`)
-		if(downloadButtons.length) downloadButtons.forEach((button) => {
-			button.href = versionsDetails[os]
-		})
-	})
 
 	// Gérer la section comparaison entre deux vidéos
 	if(document.getElementById('comparison')){
@@ -274,41 +283,7 @@ window.onload = async function(){
 			// await new Promise((resolve) => { if(videoAfter.readyState >= 4) resolve(); else videoAfter.addEventListener('canplaythrough', resolve) })
 		}
 
-		videoBefore.currentTime = 0
-		videoAfter.currentTime = 0
-
-		// Gérer la synchronisation des vidéos
-		var syncVideos = () => {
-			if(Math.abs(videoBefore.currentTime - videoAfter.currentTime) > 0.1){
-				videoBefore.pause()
-				videoAfter.pause()
-
-				console.log(`Syncing videos, videoBefore was ${videoBefore.currentTime} when videoAfter was ${videoAfter.currentTime}`)
-
-				setTimeout(() => {
-					videoAfter.currentTime = videoBefore.currentTime
-
-					videoBefore.play()
-					videoAfter.play()
-				}, 100)
-			}
-		}
-		videoBefore.addEventListener('timeupdate', syncVideos)
-		videoBefore.addEventListener('ended', () => {
-			videoBefore.currentTime = 0
-			videoAfter.currentTime = 0
-			videoBefore.play()
-			videoAfter.play()
-		})
-
-		// Démarrer les vidéos
-		if(autoloadVideos){
-			videoBefore.play()
-			videoAfter.play()
-		} else {
-			videoBefore.setAttribute("controls", "")
-			videoAfter.setAttribute("controls", "")
-		}
+		if(pageName != 'comparison') startComparison(autoloadVideos)
 	}
 
 	// Gérer la vidéo de démonstration
@@ -425,6 +400,49 @@ window.onclick = function(e){
 			hideModal(modalId)
 			break
 		}
+	}
+}
+
+async function startComparison(autoloadVideos = true){
+	console.log("Starting comparison videos function")
+
+	const videoBefore = document.getElementById('comparison__videoBefore')
+	const videoAfter = document.getElementById('comparison__videoAfter')
+
+	videoBefore.currentTime = 0
+	videoAfter.currentTime = 0
+
+	// Gérer la synchronisation des vidéos
+	var syncVideos = () => {
+		if(Math.abs(videoBefore.currentTime - videoAfter.currentTime) > 0.1){
+			videoBefore.pause()
+			videoAfter.pause()
+
+			console.log(`Syncing videos, videoBefore was ${videoBefore.currentTime} when videoAfter was ${videoAfter.currentTime}`)
+
+			setTimeout(() => {
+				videoAfter.currentTime = videoBefore.currentTime
+
+				videoBefore.play()
+				videoAfter.play()
+			}, 100)
+		}
+	}
+	videoBefore.addEventListener('timeupdate', syncVideos)
+	videoBefore.addEventListener('ended', () => {
+		videoBefore.currentTime = 0
+		videoAfter.currentTime = 0
+		videoBefore.play()
+		videoAfter.play()
+	})
+
+	// Démarrer les vidéos
+	if(autoloadVideos){
+		videoBefore.play()
+		videoAfter.play()
+	} else {
+		videoBefore.setAttribute("controls", "")
+		videoAfter.setAttribute("controls", "")
 	}
 }
 

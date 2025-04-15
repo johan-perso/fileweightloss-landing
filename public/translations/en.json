@@ -27,7 +27,13 @@
 		"videoBeforeAlt": "Before Comparison",
 		"videoAfterAlt": "After Comparison",
 		"videoBeforeText": "Original",
-		"videoAfterText": "Medium Settings"
+		"videoAfterText": "Medium Settings",
+		"embedded": {
+			"modalTitle": "File Weight Loss Demo",
+			"modalContent": "This demonstration will load about 45 MB of data to show a comparison between two videos. Download of thoses videos will not happen unless you confirm using the button below.",
+			"modalButtonContent": "Start Demo",
+			"pageName": "Demo"
+		}
 	},
 	"features": {
 		"quality": {

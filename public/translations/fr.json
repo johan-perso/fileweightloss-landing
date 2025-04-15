@@ -27,7 +27,13 @@
 		"videoBeforeAlt": "Comparatif Avant",
 		"videoAfterAlt": "Comparatif Après",
 		"videoBeforeText": "Original",
-		"videoAfterText": "Réglages moyens"
+		"videoAfterText": "Réglages moyens",
+		"embedded": {
+			"modalTitle": "Démonstration de File Weight Loss",
+			"modalContent": "Cette démonstration chargera environ 45 MB de données pour afficher un comparatif entre deux vidéos. Le chargement n'aura pas lieu tant que vous ne le confirmez pas.",
+			"modalButtonContent": "Charger la démo",
+			"pageName": "Démonstration"
+		}
 	},
 	"features": {
 		"quality": {

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).detectLang(this.routePath) }}" class="bg-transparent scroll-smooth">
+<head>
+	<DefaultHead pageName="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'comparison.embedded.pageName') }}"></DefaultHead>
+
+	<script src="/main.js" async></script>
+
+	<link rel="preload" href="/fonts/geist-v1-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/geist-v1-latin-500.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/geist-v1-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+<body class="text-sm leading-10">
+	<JsRequired></JsRequired>
+	<Loader isHomepage="{{ this.routeFile.endsWith('index.html') ? 'true' : 'false' }}"></Loader>
+
+	<!-- Modal -->
+	<Modal
+		idPrefix="confirm"
+		title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'comparison.embedded.modalTitle') }}"
+		content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'comparison.embedded.modalContent') }}"
+		buttonContent="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'comparison.embedded.modalButtonContent') }}"
+		buttonOnclick="hideModal('confirm') && startComparison()"
+	></Modal>
+
+	<ComparisonVideos standalone="true"></ComparisonVideos>
+</body>
+</html>

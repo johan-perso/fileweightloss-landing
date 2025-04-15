@@ -24,5 +24,15 @@
 			"showFile": "public/download.html"
 		}
 	},
+	"/fr/comparison.html": {
+		"options": {
+			"showFile": "public/comparison.html"
+		}
+	},
+	"/en/comparison.html": {
+		"options": {
+			"showFile": "public/comparison.html"
+		}
+	},
 	"translations/util.js": {}
 }
