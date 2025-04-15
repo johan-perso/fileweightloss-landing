@@ -133,7 +133,7 @@ window.onload = async function(){
 	const isOsSupported = checkOsSupported()
 	console.log("Detected system:", os)
 
-	var autoloadVideos = false
+	var autoloadVideos = true
 	try {
 		autoloadVideos = !roc.isDev && !navigator.connection.saveData
 	} catch (e){
