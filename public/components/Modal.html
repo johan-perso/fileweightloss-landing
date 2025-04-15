@@ -1,5 +1,5 @@
 <div id="modal_{{ $idPrefix }}__backdrop" class="fixed inset-0 z-40 bg-[#09090B] opacity-0 duration-200 backdrop-blur-sm hidden"></div>
-<div id="modal_{{ $idPrefix }}__container" class="modal hidden opacity-0 duration-300 fixed left-[50%] top-[50%] z-50 w-full max-w-lg lg:max-w-2xl translate-x-[-50%] translate-y-[-50%] gap-4 border bg-[#09090B] p-6 shadow-lg sm:rounded-lg md:w-full border-zinc-800 font-[Geist]">
+<div id="modal_{{ $idPrefix }}__container" {{ this.componentAttribs.forceshow ? 'data-forced="true"' : '' }} class="modal hidden opacity-0 duration-300 fixed left-[50%] top-[50%] z-50 w-full max-w-lg lg:max-w-2xl translate-x-[-50%] translate-y-[-50%] gap-4 border bg-[#09090B] p-6 shadow-lg rounded-md sm:rounded-lg md:w-full border-zinc-800 font-[Geist]">
 	<div class="flex flex-col space-y-1.5 text-left">
 		<h2 id="modal_{{ $idPrefix }}__title" class="text-[19px] leading-7 font-semibold text-[#FAFAFA] tracking-tight">{{ $title }}</h2>
 		<p id="modal_{{ $idPrefix }}__content" class="text-[15px] leading-[22px] text-[#A1A1AA] pt-1">{{ $content }}</p>

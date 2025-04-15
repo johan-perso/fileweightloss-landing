@@ -16,6 +16,7 @@
 	<!-- Modal -->
 	<Modal
 		idPrefix="confirm"
+		forceShow="true"
 		title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'comparison.embedded.modalTitle') }}"
 		content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'comparison.embedded.modalContent') }}"
 		buttonContent="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'comparison.embedded.modalButtonContent') }}"

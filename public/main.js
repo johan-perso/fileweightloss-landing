@@ -377,6 +377,7 @@ window.onload = async function(){
 window.onkeydown = function(e){
 	if(e.key == 'Escape' && modalShown){
 		Array.from(document.querySelectorAll('.modal')).forEach((el) => {
+			if(el.getAttribute('data-forced') == 'true') return console.log("Can't close modal because data-forced is set to true")
 			hideModal(el.id.replace('modal_', '').split('_')[0])
 		})
 	}
@@ -395,6 +396,7 @@ window.onclick = function(e){
 	const modals = document.querySelectorAll('[id^="modal_"]:not([id$="__backdrop"])')
 	for(const modal of modals){
 		if(!modal.classList.contains('hidden')){
+			if(modal.getAttribute('data-forced') == 'true') return console.log("Can't close modal because data-forced is set to true")
 			const modalId = modal.id.replace('modal_', '').split('_')[0]
 			console.log(`Hiding modal with id ${modalId} because user clicked outside`)
 			hideModal(modalId)
