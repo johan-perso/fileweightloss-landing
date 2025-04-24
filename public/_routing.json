@@ -4,6 +4,41 @@
 			"redirect": "/"
 		}
 	},
+	"/dl.html": {
+		"options": {
+			"redirect": "/download"
+		}
+	},
+	"/download/mac.html": {
+		"options": {
+			"redirect": "https://dl.bassinecorp.fr/fwl?os=macos"
+		}
+	},
+	"/download/macos.html": {
+		"options": {
+			"redirect": "https://dl.bassinecorp.fr/fwl?os=macos"
+		}
+	},
+	"/download/windows.html": {
+		"options": {
+			"redirect": "https://dl.bassinecorp.fr/fwl?os=windows"
+		}
+	},
+	"/download/linux.html": {
+		"options": {
+			"redirect": "https://dl.bassinecorp.fr/fwl?os=linux"
+		}
+	},
+	"/download/direct.html": {
+		"options": {
+			"redirect": "https://dl.bassinecorp.fr/fwl"
+		}
+	},
+	"/download/auto.html": {
+		"options": {
+			"redirect": "https://dl.bassinecorp.fr/fwl"
+		}
+	},
 	"/fr/index.html": {
 		"options": {
 			"showFile": "public/index.html"
