@@ -215,136 +215,11 @@ window.onload = async function(){
 		showModal('confirm')
 	}
 
-	// Gérer la section comparaison entre deux vidéos
-	if(document.getElementById('comparison')){
-		console.log("Setting up comparison section")
-		const container = document.getElementById('comparison__container')
-		const button = document.querySelector('.comparison__sliderButton')
-		const videoBefore = document.getElementById('comparison__videoBefore')
-		const videoAfter = document.getElementById('comparison__videoAfter')
-
-		if(autoloadVideos){
-			videoBefore.setAttribute('preload', 'auto')
-			videoAfter.setAttribute('preload', 'auto')
-		}
-
-		let position = 50
-		updatePosition(position)
-
-		// Fonctions pour gérer le déplacement du slider
-		function updatePosition(positionPercent){
-			position = positionPercent
-			const positionValue = `${position}%`
-			document.documentElement.style.setProperty('--position', positionValue)
-		}
-		function handleMove(e){
-			if(!isDragging) return
-
-			let clientX
-			if(e.type === 'touchmove'){
-				clientX = e.touches[0].clientX
-			} else {
-				clientX = e.clientX
-			}
-
-			const rect = container.getBoundingClientRect()
-			const x = clientX - rect.left
-			const percent = Math.min(Math.max((x / rect.width) * 100, 0), 100)
-
-			updatePosition(percent)
-		}
-
-		let isDragging = false
-
-		// Gérer la souris
-		button.addEventListener('mousedown', () => { isDragging = true })
-		document.addEventListener('mouseup', () => { isDragging = false })
-		document.addEventListener('mousemove', handleMove)
-
-		// Gérer les écrans tactiles
-		button.addEventListener('touchstart', () => { isDragging = true }, { passive: true })
-		document.addEventListener('touchend', () => { isDragging = false })
-		document.addEventListener('touchmove', handleMove)
-
-		if(autoloadVideos){
-			// Forcer le chargement des vidéos, et attendre le chargement
-			console.log("Loading comparison videos")
-			try {
-				videoBefore.load()
-				videoAfter.load()
-			} catch (e){
-				console.warn("failed to manually preload diff videos")
-				console.warn(e)
-			}
-			await waitForVideoLoaded(videoBefore)
-			await waitForVideoLoaded(videoAfter)
-			console.log("Loaded comparison videos")
-			// await new Promise((resolve) => { if(videoBefore.readyState >= 4) resolve(); else videoBefore.addEventListener('canplaythrough', resolve) })
-			// await new Promise((resolve) => { if(videoAfter.readyState >= 4) resolve(); else videoAfter.addEventListener('canplaythrough', resolve) })
-		}
-
-		if(pageName != 'comparison') startComparison(autoloadVideos)
-	}
+	// Gérer la section comparaison entre deux vidéos (via une fonction à laquelle on attend pas sa fin)
+	if(document.getElementById('comparison')) setupComparison(autoloadVideos, pageName)
 
 	// Gérer la vidéo de démonstration
-	var demoVideo = document.getElementById('demos__video')
-	if(demoVideo){
-		// Lire la vidéo de démonstration lorsqu'elle entre dans le viewport
-		const videoObserver = new IntersectionObserver((entries) => {
-			entries.forEach(entry => {
-				if(entry.isIntersecting){
-					console.log("Playing demo video as it's in viewport")
-					demoVideo.play()
-				}
-				else {
-					console.log("Pausing demo video as it's not in viewport")
-					demoVideo.pause()
-				}
-			})
-		}, {
-			root: null, // viewport comme zone d'observation
-			rootMargin: '0px', // pas de marge
-			threshold: 0.25 // au moins 25% visible
-		})
-		videoObserver.observe(demoVideo)
-
-		// Précharger les vidéos
-		await new Promise((resolve) => {
-			var loaded = []
-
-			demosVideos.forEach(async (video) => {
-				await preload(video.url)
-				loaded.push(video.url)
-
-				if(loaded.length == demosVideos.length){
-					console.log("Preloaded all demo videos")
-					resolve()
-				}
-			})
-		})
-
-		// Passer à la vidéo suivante quand la vidéo en cours est terminée
-		demoVideo.addEventListener('ended', async () => {
-			console.log("Demo video ended, showing next one")
-
-			demosVideosCurrent++
-			if(demosVideosCurrent >= demosVideos.length) demosVideosCurrent = 0
-
-			const nextVideoEl = document.createElement('video')
-			nextVideoEl.muted = true
-			nextVideoEl.playsinline = true
-			nextVideoEl.preload = 'auto'
-			nextVideoEl.src = preloaded[demosVideos[demosVideosCurrent].url] || demosVideos[demosVideosCurrent].url
-
-			console.log(`Loading data for ${demosVideos[demosVideosCurrent].url}`)
-			await waitForVideoLoaded(nextVideoEl)
-			console.log(`Loaded data for ${demosVideos[demosVideosCurrent].url}`)
-
-			demoVideo.src = nextVideoEl.src
-			demoVideo.setAttribute('alt', demosVideos[demosVideosCurrent].alt)
-			demoVideo.play()
-		})
-	}
+	if(document.getElementById('demos__video')) setupDemos()
 
 	// Effet de suivi du curseur sur l'image dans le hero
 	const screenshotImg = document.querySelector('.presentationImage__width')
@@ -405,14 +280,165 @@ window.onclick = function(e){
 	}
 }
 
+// Mettre en place la section des vidéos de démonstration
+async function setupDemos(){
+	var demoVideo = document.getElementById('demos__video')
+
+	// Lire la vidéo de démonstration lorsqu'elle entre dans le viewport
+	const videoObserver = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if(entry.isIntersecting){
+				console.log("Playing demo video as it's in viewport")
+				demoVideo.play()
+			}
+			else {
+				console.log("Pausing demo video as it's not in viewport")
+				demoVideo.pause()
+			}
+		})
+	}, {
+		root: null, // viewport comme zone d'observation
+		rootMargin: '0px', // pas de marge
+		threshold: 0.25 // au moins 25% visible
+	})
+	videoObserver.observe(demoVideo)
+
+	// Précharger les vidéos
+	await new Promise((resolve) => {
+		var loaded = []
+
+		demosVideos.forEach(async (video) => {
+			await preload(video.url)
+			loaded.push(video.url)
+
+			if(loaded.length == demosVideos.length){
+				console.log("Preloaded all demo videos")
+				resolve()
+			}
+		})
+	})
+
+	// Passer à la vidéo suivante quand la vidéo en cours est terminée
+	demoVideo.addEventListener('ended', async () => {
+		console.log("Demo video ended, showing next one")
+
+		demosVideosCurrent++
+		if(demosVideosCurrent >= demosVideos.length) demosVideosCurrent = 0
+
+		const nextVideoEl = document.createElement('video')
+		nextVideoEl.muted = true
+		nextVideoEl.playsinline = true
+		nextVideoEl.preload = 'auto'
+		nextVideoEl.src = preloaded[demosVideos[demosVideosCurrent].url] || demosVideos[demosVideosCurrent].url
+
+		console.log(`Loading data for ${demosVideos[demosVideosCurrent].url}`)
+		await waitForVideoLoaded(nextVideoEl)
+		console.log(`Loaded data for ${demosVideos[demosVideosCurrent].url}`)
+
+		demoVideo.src = nextVideoEl.src
+		demoVideo.setAttribute('alt', demosVideos[demosVideosCurrent].alt)
+		demoVideo.play()
+	})
+
+	demoVideo.classList.remove('animate-pulse')
+}
+
+// Mettre en place la section de comparaison
+async function setupComparison(autoloadVideos, pageName){
+	console.log("Setting up comparison section")
+	const container = document.getElementById('comparison__container')
+	const button = document.querySelector('.comparison__sliderButton')
+	const videoBefore = document.getElementById('comparison__videoBefore')
+	const videoAfter = document.getElementById('comparison__videoAfter')
+
+	if(autoloadVideos){
+		videoBefore.setAttribute('preload', 'auto')
+		videoAfter.setAttribute('preload', 'auto')
+	}
+
+	let position = 50
+	updatePosition(position)
+
+	// Fonctions pour gérer le déplacement du slider
+	function updatePosition(positionPercent){
+		position = positionPercent
+		const positionValue = `${position}%`
+		document.documentElement.style.setProperty('--position', positionValue)
+	}
+	function handleMove(e){
+		if(!isDragging) return
+
+		let clientX
+		if(e.type === 'touchmove'){
+			clientX = e.touches[0].clientX
+		} else {
+			clientX = e.clientX
+		}
+
+		const rect = container.getBoundingClientRect()
+		const x = clientX - rect.left
+		const percent = Math.min(Math.max((x / rect.width) * 100, 0), 100)
+
+		updatePosition(percent)
+	}
+
+	let isDragging = false
+
+	// Gérer la souris
+	button.addEventListener('mousedown', () => { isDragging = true })
+	document.addEventListener('mouseup', () => { isDragging = false })
+	document.addEventListener('mousemove', handleMove)
+
+	// Gérer les écrans tactiles
+	button.addEventListener('touchstart', () => { isDragging = true }, { passive: true })
+	document.addEventListener('touchend', () => { isDragging = false })
+	document.addEventListener('touchmove', handleMove)
+
+	if(autoloadVideos){
+		// Forcer le chargement des vidéos, et attendre le chargement
+		console.log("Loading comparison videos")
+		try {
+			videoBefore.load()
+			videoAfter.load()
+		} catch (e){
+			console.warn("failed to manually preload diff videos")
+			console.warn(e)
+		}
+		await waitForVideoLoaded(videoBefore)
+		await waitForVideoLoaded(videoAfter)
+		console.log("Loaded comparison videos")
+		// await new Promise((resolve) => { if(videoBefore.readyState >= 4) resolve(); else videoBefore.addEventListener('canplaythrough', resolve) })
+		// await new Promise((resolve) => { if(videoAfter.readyState >= 4) resolve(); else videoAfter.addEventListener('canplaythrough', resolve) })
+	}
+
+	if(pageName != 'comparison') startComparison(autoloadVideos)
+}
+
 async function startComparison(autoloadVideos = true){
 	console.log("Starting comparison videos function")
 
 	const videoBefore = document.getElementById('comparison__videoBefore')
 	const videoAfter = document.getElementById('comparison__videoAfter')
 
+	document.getElementById('comparison').classList.add('animate-pulse')
+
+	// Forcer le chargement des vidéos, et attendre le chargement
+	console.log("Loading comparison videos")
+	try {
+		videoBefore.load()
+		videoAfter.load()
+	} catch (e){
+		console.warn("failed to manually preload diff videos")
+		console.warn(e)
+	}
+	await waitForVideoLoaded(videoBefore)
+	await waitForVideoLoaded(videoAfter)
+	console.log("Loaded comparison videos")
+
 	videoBefore.currentTime = 0
 	videoAfter.currentTime = 0
+
+	document.getElementById('comparison').classList.remove('animate-pulse')
 
 	// Gérer la synchronisation des vidéos
 	var syncVideos = () => {
