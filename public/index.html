@@ -123,14 +123,19 @@
 				title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.efficient.title') }}"
 				content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.efficient.content') }}"
 			></BlockFeature>
-			<BlockFeature
+			<!-- <BlockFeature
 				title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.browser.title') }}"
 				content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.browser.content') }}"
-			></BlockFeature>
+			></BlockFeature> -->
 			<BlockFeature
 				hideOnMobile="true"
 				title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.multilanguage.title') }}"
 				content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.multilanguage.content') }}"
+			></BlockFeature>
+			<BlockFeature
+				hideOnMobile="true"
+				title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.yours.title') }}"
+				content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'morefeatures.yours.content') }}"
 			></BlockFeature>
 		</div>
 

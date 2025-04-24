@@ -17,7 +17,8 @@
 		"opensource": "Open Source",
 		"try": "Try",
 		"tryOnBrowser": "in your browser",
-		"tryHere": "here"
+		"tryHere": "here",
+		"demo": "Demonstration"
 	},
 	"hero": {
 		"title": "Make your files get in shape 🏋️‍♂️",
@@ -76,7 +77,7 @@
 		},
 		"free": {
 			"title": "Free and Ad-free",
-			"content": "Completely free, no ads, open-source, and available on all desktop systems (macOS, Windows, Linux)."
+			"content": "Completely free, no ads, no telemetry, open-source, and available on all desktop systems (macOS, Windows, Linux)."
 		},
 		"efficient": {
 			"title": "Up to 95%",
@@ -88,7 +89,11 @@
 		},
 		"multilanguage": {
 			"title": "Multilingual",
-			"content": "Fully translated into English and French. We also won't add language-dependent properties to your files."
+			"content": "Fully translated into English and French, localized for your language."
+		},
+		"yours": {
+			"title": "Tailored for You",
+			"content": "Works the way you do. Simple, smooth, and made to fit into your daily routine."
 		}
 	},
 	"footer": {
@@ -102,7 +107,8 @@
 		"cliVersion": "<span class='max-[450px]:hidden'>Terminal&nbsp;</span>Version",
 		"contact": "Contact",
 		"appDev": "Developed in Paris &nbsp;🥐&nbsp; by Elie.",
-		"webDev": "Landing made by "
+		"webDev": "Landing made by ",
+		"donate": "Make a donation"
 	},
 	"download": {
 		"pageName": "Download",

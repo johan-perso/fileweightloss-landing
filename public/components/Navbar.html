@@ -4,21 +4,21 @@
 		<h1 class="ml-4 min-[2500px]:ml-6 font-[Poppins] text-lg min-[400px]:text-[19px] min-[2000px]:text-2xl min-[2500px]:text-[28px] font-semibold text-white">FileWeightLoss</h1>
 	</a>
 
-	<div id="navbarContent" class="flex justify-center items-center gap-1 min-[2500px]:gap-4 max-[713px]:hidden">
+	<div id="navbarContent" class="flex justify-center items-center gap-1 min-[2500px]:gap-4 max-[784px]:hidden">
 		<a href="{{ this.componentAttribs.ishomepage == 'true' ? '#features' : '/#features' }}" class="text-center font-[Geist] font-medium min-[2000px]:text-xl min-[2500px]:text-2xl hover:bg-[#27272A] px-3 duration-200 rounded-md" style="color: rgba(250, 250, 250, 0.80)">
 			{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'navbar.features') }}
 		</a>
-		<a href="download" class="text-center font-[Geist] font-medium min-[2000px]:text-xl min-[2500px]:text-2xl hover:bg-[#27272A] px-3 duration-200 rounded-md" style="color: rgba(250, 250, 250, 0.80)">
-			{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'navbar.download') }}
+		<a href="{{ this.componentAttribs.ishomepage == 'true' ? '#demos' : '/#demos' }}" class="text-center font-[Geist] font-medium min-[2000px]:text-xl min-[2500px]:text-2xl hover:bg-[#27272A] px-3 duration-200 rounded-md" style="color: rgba(250, 250, 250, 0.80)">
+			{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'navbar.demo') }}
 		</a>
-		<a href="https://github.com/el2zay/fileweightloss" class="text-center font-[Geist] font-medium max-[907px]:hidden min-[2000px]:text-xl min-[2500px]:text-2xl hover:bg-[#27272A] px-3 duration-200 rounded-md" style="color: rgba(250, 250, 250, 0.80)">
+		<a href="https://github.com/el2zay/fileweightloss" class="text-center font-[Geist] font-medium max-[963px]:hidden min-[2000px]:text-xl min-[2500px]:text-2xl hover:bg-[#27272A] px-3 duration-200 rounded-md" style="color: rgba(250, 250, 250, 0.80)">
 			{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'navbar.opensource') }}
 		</a>
 	</div>
 
 	<div class="flex justify-end items-center max-[400px]:hidden">
-		<a href="https://fwl.bassinecorp.fr/app" target="_blank" aria-disabled="true" class="pointer-events-none select-none opacity-50 duration-200 bg-[#FAFAFA] text-[#18181B] rounded-md font-[Geist] px-5 py-5 min-[2000px]:py-6 min-[2000px]:px-7 min-[2000px]:text-lg min-[2500px]:py-7 min-[2500px]:px-8 min-[2500px]:text-xl h-10 text-sm leading-5 box-border inline-flex items-center justify-center text-center font-medium" style="box-shadow: 0 1px 2px 0 rgb(0 0 0 / .05);">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'navbar.try') }}<span class="max-[490px]:hidden">&nbsp;{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'navbar.tryOnBrowser') }}</span><span class="min-[491px]:hidden max-[420px]:hidden">&nbsp;{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'navbar.tryHere') }}</span></a>
-		<!-- <a href="https://fwl.bassinecorp.fr/app" target="_blank" class="duration-200 bg-[#FAFAFA] text-[#18181B] rounded-md font-[Geist] px-5 py-5 min-[2000px]:py-6 min-[2000px]:px-7 min-[2000px]:text-lg min-[2500px]:py-7 min-[2500px]:px-8 min-[2500px]:text-xl h-10 text-sm leading-5 box-border inline-flex items-center justify-center text-center font-medium" style="box-shadow: 0 1px 2px 0 rgb(0 0 0 / .05);">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'navbar.try') }}<span class="max-[490px]:hidden">&nbsp;{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'navbar.tryOnBrowser') }}</span><span class="min-[491px]:hidden max-[420px]:hidden">&nbsp;{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'navbar.tryHere') }}</span></a> -->
+		<!-- <a href="https://fwl.bassinecorp.fr/app" target="_blank" aria-disabled="true" class="pointer-events-none select-none opacity-50 duration-200 bg-[#FAFAFA] text-[#18181B] rounded-md font-[Geist] px-5 py-5 min-[2000px]:py-6 min-[2000px]:px-7 min-[2000px]:text-lg min-[2500px]:py-7 min-[2500px]:px-8 min-[2500px]:text-xl h-10 text-sm leading-5 box-border inline-flex items-center justify-center text-center font-medium" style="box-shadow: 0 1px 2px 0 rgb(0 0 0 / .05);">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'navbar.try') }}<span class="max-[490px]:hidden">&nbsp;{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'navbar.tryOnBrowser') }}</span><span class="min-[491px]:hidden max-[420px]:hidden">&nbsp;{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'navbar.tryHere') }}</span></a> -->
+		<a href="{{ this.componentAttribs.ishomepage == 'true' ? 'download' : '/download' }}" class="duration-200 bg-[#FAFAFA] text-[#18181B] rounded-md font-[Geist] px-5 py-5 min-[2000px]:py-6 min-[2000px]:px-7 min-[2000px]:text-lg min-[2500px]:py-7 min-[2500px]:px-8 min-[2500px]:text-xl h-10 text-sm leading-5 box-border inline-flex items-center justify-center text-center font-medium" style="box-shadow: 0 1px 2px 0 rgb(0 0 0 / .05);">{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'navbar.download') }}</a>
 	</div>
 </nav>
 

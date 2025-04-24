@@ -17,7 +17,8 @@
 		"opensource": "Open-Source",
 		"try": "Essayer",
 		"tryOnBrowser": "sur navigateur",
-		"tryHere": "ici"
+		"tryHere": "ici",
+		"demo": "Démonstration"
 	},
 	"hero": {
 		"title": "Faites perdre du poids à vos fichiers 🏋️‍♂️",
@@ -76,11 +77,11 @@
 		},
 		"free": {
 			"title": "Gratuit<span class='max-[1100px]:hidden'>&nbsp;et </span><span class='min-[1101px]:hidden'>, </span>sans pubs",
-			"content": "Complètement gratuit, sans publicité, open-source et disponible sur tous les systèmes de bureau."
+			"content": "Complètement gratuit, sans publicité ni télémétrie, open-source et disponible sur tous les systèmes de bureau."
 		},
 		"efficient": {
 			"title": "Jusqu'à 95%",
-			"content": "Mettez la barre au maximum et obtenez une compression de vos vidéos jusqu'à 95% grâce aux optimisations proposées !"
+			"content": "Mettez la barre au maximum et obtenez une compression de vos vidéos jusqu'à 95% grâce aux différentes optimisations !"
 		},
 		"browser": {
 			"title": "Sur navigateur",
@@ -88,7 +89,11 @@
 		},
 		"multilanguage": {
 			"title": "Multilingue",
-			"content": "Entièrement traduit en français et en anglais. Nous n'ajouterons pas non plus de propriétés dépendantes d'une langue dans vos fichiers."
+			"content": "Entièrement traduit en français et en anglais, vous pourrez choisir la langue de votre choix."
+		},
+		"yours": {
+			"title": "Pour vous",
+			"content": "Faites de cette app la vôtre en l'adaptant à vos propres besoins et à votre manière de travailler."
 		}
 	},
 	"footer": {
@@ -102,7 +107,8 @@
 		"cliVersion": "<span class='max-[450px]:hidden'>Version&nbsp;</span>Terminal</a>",
 		"contact": "Contact",
 		"appDev": "Développé depuis Paris &nbsp;🥐&nbsp; par Elie.",
-		"webDev": "Site conçu par "
+		"webDev": "Site conçu par ",
+		"donate": "Faire un don"
 	},
 	"download": {
 		"pageName": "Téléchargement",
