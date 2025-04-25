@@ -22,6 +22,8 @@ var translations
 var modalShown = false
 var isLoadingPage = true
 var isFetchingVersions = false
+var autoloadVideos = true
+var pageName
 var versionsDetails = {}
 var demosVideosCurrent = 0
 var franceEmojis = { i: 0, list: ['🥐', '🥖', '🍷', '🧀', '🇫🇷', '🗼'] }
@@ -130,7 +132,7 @@ async function preload(url){
 }
 
 window.onload = async function(){
-	var pageName = window.location.pathname.endsWith('/') ? window.location.pathname.slice(0, -1) : window.location.pathname;
+	pageName = window.location.pathname.endsWith('/') ? window.location.pathname.slice(0, -1) : window.location.pathname;
 	if(pageName.startsWith('/')) pageName = pageName.slice(1);
 	if(pageName.split('/').length > 1) pageName = pageName.split('/').slice(1).join('/');
 
@@ -138,7 +140,6 @@ window.onload = async function(){
 	const isOsSupported = checkOsSupported()
 	console.log("Detected system:", os)
 
-	var autoloadVideos = true
 	try {
 		autoloadVideos = !roc.isDev && !navigator.connection.saveData
 	} catch (e){
@@ -481,6 +482,38 @@ function changeEmoji(el){
 	if(franceEmojis.i >= franceEmojis.list.length) franceEmojis.i = 0
 
 	el.innerText = franceEmojis.list[franceEmojis.i]
+}
+
+function debug(){
+	var debugText = `
+	pageName: ${pageName}
+	autoloadVideos: ${autoloadVideos}
+	modalShown: ${modalShown}
+	isLoadingPage: ${isLoadingPage}
+	isFetchingVersions: ${isFetchingVersions}
+	demosVideosCurrent: ${demosVideosCurrent}
+	roc: ${JSON.stringify(roc) || roc}
+	franceEmojis: ${JSON.stringify(franceEmojis) || franceEmojis}
+	versionsDetails: ${JSON.stringify(versionsDetails) || versionsDetails}
+	translations: ${JSON.stringify(translations) || translations}
+	-----
+	getOS(): ${getOS()}
+	checkOsSupported(): ${checkOsSupported()}
+	preloaded: ${JSON.stringify(preloaded) || preloaded}
+	-----
+	navigator.canShare: ${navigator.canShare}
+	navigator.connection: ${JSON.stringify(navigator.connection) || navigator.connection}
+	`
+
+	console.log('debugText:', debugText)
+
+	try {
+		navigator.clipboard.writeText(debugText)
+	} catch (e){
+		console.warn("failed to copy debugText to clipboard")
+		console.warn(e)
+		alert(debugText)
+	}
 }
 
 // Gérer les modals
