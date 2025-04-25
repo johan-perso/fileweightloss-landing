@@ -8,6 +8,6 @@
         "build": "roc build"
     },
     "dependencies": {
-        "roc-framework": "^4.0.1"
+        "roc-framework": "^4.0.2"
     }
 }
