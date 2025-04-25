@@ -179,15 +179,20 @@ window.onload = async function(){
 					case 'macos':
 						button.style.fontFamily = 'SF Pro, sans-serif'
 						button.innerText = translations.download.macos.buttonContent || 'macOS'
-						button.onclick = () => showModal('download', 'macos')
+						button.onclick = () => {
+							trackDownload(os)
+							showModal('download', 'macos')
+						}
 						break
 					case 'windows':
 						button.style.fontFamily = 'Geist, sans-serif'
 						button.innerText = translations.download.windows.buttonContent || 'Windows'
+						button.onclick = () => trackDownload(os)
 						break
 					case 'linux':
 						button.style.fontFamily = 'Geist, sans-serif'
 						button.innerText = translations.download.linux.buttonContent || 'Linux'
+						button.onclick = () => trackDownload(os)
 						break
 					default:
 						button.href = 'javascript:shareDownload()'
@@ -210,6 +215,10 @@ window.onload = async function(){
 			const downloadButtons = document.querySelectorAll(`.downloadButton__${os}`)
 			if(downloadButtons.length) downloadButtons.forEach((button) => {
 				button.href = versionsDetails[os]
+				button.onclick = () => {
+					if(button.getAttribute('onclick')) eval(button.getAttribute('onclick'))
+					trackDownload(os)
+				}
 			})
 		})
 	} else {
@@ -516,6 +525,14 @@ function debug(){
 	}
 }
 
+function trackDownload(platform){
+	var id = `${Date.now()}${Math.random().toString(36).substring(2, 15)}${(Math.random() * 10 * Math.random()).toString().replace('.', '')}`.substring(0, 32)
+	fetch(`https://fwl-analytics.bassinecorp.fr/download?a=${id}&b=${platform}&c=6c69ecf8-a8fb-4ded-b135-239de1ece7ce&d=6d57cdd1-70e6-4eca-8835-d95c44bd92d1=z`, {
+		method: 'POST',
+		header: { 'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaWxlIjoid2VpZ2h0IiwibG9zcyI6MX0.rA4P-gqOO9yaTMcWjl4ttLcaZ1wuDCcueadJcAYYimc' }
+	})
+}
+
 // Gérer les modals
 async function showModal(idPrefix, context){
 	if(modalShown) return console.log("Modal already shown")
@@ -639,6 +656,8 @@ async function autoDownload(){
 	else if(os == 'windows') location.href = versionsDetails.windows
 	else if(os == 'linux') location.href = versionsDetails.linux
 	else alert(`Platform '${os}' unsupported! Report this to johan@johanstick.fr or through https://johanstick.fr/#contact`)
+
+	trackDownload(os)
 
 	if(os == 'macos') showModal('download', 'macos')
 }
