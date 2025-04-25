@@ -526,7 +526,7 @@ function debug(){
 }
 
 function trackDownload(platform){
-	var id = `${Date.now()}${Math.random().toString(36).substring(2, 15)}${(Math.random() * 10 * Math.random()).toString().replace('.', '')}`.substring(0, 32)
+	var id = `${Date.now()}z${Math.random().toString(36).substring(2, 15)}${(Math.random() * 10 * Math.random()).toString().replace('.', '')}`.substring(0, 32)
 	fetch(`https://fwl-analytics.bassinecorp.fr/download?a=${id}&b=${platform}&c=6c69ecf8-a8fb-4ded-b135-239de1ece7ce&d=6d57cdd1-70e6-4eca-8835-d95c44bd92d1=z`, {
 		method: 'POST',
 		header: { 'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaWxlIjoid2VpZ2h0IiwibG9zcyI6MX0.rA4P-gqOO9yaTMcWjl4ttLcaZ1wuDCcueadJcAYYimc' }
