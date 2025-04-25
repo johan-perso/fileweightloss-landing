@@ -24,6 +24,7 @@ var isLoadingPage = true
 var isFetchingVersions = false
 var versionsDetails = {}
 var demosVideosCurrent = 0
+var franceEmojis = { i: 0, list: ['🥐', '🥖', '🍷', '🧀', '🇫🇷', '🗼'] }
 const demosVideos = [
 	{
 		id: 'video',
@@ -474,6 +475,15 @@ async function startComparison(autoloadVideos = true){
 	}
 }
 
+// Changer l'emoji représentant la France
+function changeEmoji(el){
+	franceEmojis.i++
+	if(franceEmojis.i >= franceEmojis.list.length) franceEmojis.i = 0
+
+	el.innerText = franceEmojis.list[franceEmojis.i]
+}
+
+// Gérer les modals
 async function showModal(idPrefix, context){
 	if(modalShown) return console.log("Modal already shown")
 	modalShown = true
@@ -500,7 +510,6 @@ async function showModal(idPrefix, context){
 	modal__backdrop.classList.remove('opacity-0')
 	modal__container.classList.remove('opacity-0')
 }
-
 async function hideModal(idPrefix){
 	var modal__backdrop = document.getElementById(`modal_${idPrefix}__backdrop`)
 	var modal__container = document.getElementById(`modal_${idPrefix}__container`)

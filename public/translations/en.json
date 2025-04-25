@@ -106,7 +106,7 @@
 		"webVersion": "Web Version (soon)",
 		"cliVersion": "<span class='max-[450px]:hidden'>Terminal&nbsp;</span>Version",
 		"contact": "Contact",
-		"appDev": "Developed in Paris &nbsp;🥐&nbsp; by Elie.",
+		"appDev": "Developed in Paris &nbsp;<span onclick='changeEmoji(this)' class='select-none'>🥐</span>&nbsp; by Elie.",
 		"webDev": "Landing made by ",
 		"donate": "Make a donation"
 	},
