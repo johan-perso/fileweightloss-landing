@@ -1,4 +1,14 @@
 {
+	"/ms-store.html": {
+		"options": {
+			"redirect": "https://apps.microsoft.com/search/publisher?name=Bassine+Corp"
+		}
+	},
+	"/msstore.html": {
+		"options": {
+			"redirect": "https://apps.microsoft.com/search/publisher?name=Bassine+Corp"
+		}
+	},
 	"/404.html": {
 		"options": {
 			"redirect": "/"
