@@ -9,11 +9,18 @@
 			"redirect": "https://apps.microsoft.com/search/publisher?name=Bassine+Corp"
 		}
 	},
+	"/github.html": {
+		"options": {
+			"redirect": "https://github.com/el2zay/fileweightloss"
+		}
+	},
+
 	"/404.html": {
 		"options": {
 			"redirect": "/"
 		}
 	},
+
 	"/dl.html": {
 		"options": {
 			"redirect": "/download"
@@ -39,6 +46,7 @@
 			"redirect": "https://dl.bassinecorp.fr/fwl?os=linux"
 		}
 	},
+
 	"/download/direct.html": {
 		"options": {
 			"redirect": "https://dl.bassinecorp.fr/fwl"
@@ -49,6 +57,7 @@
 			"redirect": "https://dl.bassinecorp.fr/fwl"
 		}
 	},
+
 	"/fr/index.html": {
 		"options": {
 			"showFile": "public/index.html"
@@ -79,5 +88,6 @@
 			"showFile": "public/comparison.html"
 		}
 	},
+
 	"translations/util.js": {}
 }
