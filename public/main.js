@@ -628,7 +628,7 @@ async function fetchVersions(){
 	versions[0].assets.forEach(asset => {
 		if(asset.name.includes('.dmg')) versionsDetails.macos = asset.browser_download_url
 		else if(asset.name.includes('.exe')) versionsDetails.windows = asset.browser_download_url
-		// else if(asset.name.includes('')) versionsDetails.linux = asset.browser_download_url // pas encore dispo
+		else if(asset.name.includes('.tar.xz')) versionsDetails.linux = asset.browser_download_url
 	})
 
 	versionsDetails.expireDate = new Date().getTime() + 1000 * 60 * 60 * 6 // 6h
@@ -645,7 +645,7 @@ async function autoDownload(){
 	}
 
 	if(isFetchingVersions) return
-	if(!versionsDetails.windows || !versionsDetails.macos){
+	if(!versionsDetails.windows || !versionsDetails.macos || !versionsDetails.linux){
 		isFetchingVersions = true
 		await fetchVersions()
 		isFetchingVersions = false

@@ -53,6 +53,14 @@
 					img="/medias/platforms/windows.png"
 					imgAlt="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.windows.imgAlt') }}"
 				></DownloadPlatform>
+				<DownloadPlatform
+					platformId="linux"
+					title="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.linux.title') }}"
+					content="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.linux.content') }}"
+					smallFormatContent="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.linux.smallFormatContent') }}"
+					img="/medias/platforms/linux.png"
+					imgAlt="{{ require(path.join(this.routeFile, '..', 'translations', 'util')).getValue(this.routePath, 'download.linux.imgAlt') }}"
+				></DownloadPlatform>
 			</div>
 			<!-- <div class="px-8 grid md:grid-cols-2 gap-8">
 				<DownloadPlatform
@@ -79,7 +87,6 @@
 					img="/medias/platforms/redhat.png"
 					imgAlt="Logo Red Hat"
 				></DownloadPlatform>
-				<span>Note: Si faut combler on rajoute une option "Essayer maintenant" avec le logo du navigateur en cours d'utilisation (user agent et un switch case)</span>
 			</div> -->
 		</div>
 

@@ -135,9 +135,9 @@
 		},
 		"linux": {
 			"title": "Linux",
-			"content": "---",
-			"smallFormatContent": "---",
-			"imgAlt": "---",
+			"content": "Compatible with the majority of recent distributions",
+			"smallFormatContent": "Compatible with the majority of recent distributions",
+			"imgAlt": "Linux logo",
 			"buttonContent": "Download for Linux"
 		},
 		"default": {
