@@ -141,10 +141,11 @@ window.onload = async function(){
 	console.log("Detected system:", os)
 
 	try {
-		autoloadVideos = !roc.isDev && !navigator.connection.saveData
+		autoloadVideos = !roc.isDev && !(navigator?.connection?.saveData || false)
 	} catch (e){
-		console.warn("failed to define autoloadVideos")
+		console.warn("failed to define autoloadVideos, falling back to autoloadVideos=true")
 		console.warn(e)
+		autoloadVideos = true
 	}
 	console.log("Autoloading videos:", autoloadVideos)
 
